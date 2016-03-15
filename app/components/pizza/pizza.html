@@ -1,0 +1,95 @@
+<div>
+	<h3>{{pc.title}}</h3>
+    <hr>
+    <form class="form-horizontal" novalidate name="pc.form" ng-submit="pc.save()" role="form">
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="name">Pizza</label>
+            <div class="col-sm-6 col-md-4">
+            	<!-- <input type="text" ng-model="pc.pizzas.name" name="name" id="name" class="form-control" required>
+
+                <select ng-model="pc.pizzas.name" id="surname" class="form-control" ng-options="x.name for x in pc.pizzas">
+                    <option value="">---</option>
+                    <option value="{{x.description}}"></option>
+                </select> -->
+
+                <select ng-model="pc.newOrderRes.description" class="form-control">
+                    <option value="">---</option>
+                    <option ng-repeat="x in pc.pizzas" value="{{x.description}}">{{x.name}}</option>
+                </select>
+
+
+            </div>
+            <div ng-messages="pc.form.name.$error" ng-show="pc.form.name.$touched">
+                <p ng-message="required">This field is required.</p>
+            </div>
+        </div>
+
+        <div>{{pc.newOrderRes.description}}</div>
+        <!-- <div>{{pc.pizzas.name}}</div> -->
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="size">Size</label>
+            <div class="col-sm-6 col-md-4">
+                <!-- <input type="text" ng-model="pc.pizzas.size" name="size" id="size" class="form-control" required ng-minlength="4" ng-maxlength="4"> -->
+                <select ng-model="pc.newOrderRes.size" id="placeOfBirth" class="form-control">
+                    <option value="">---</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                    
+                </select>
+            </div>
+            <div ng-messages="pc.form.size.$error" ng-show="pc.form.size.$touched">
+                <p ng-message="required">This field is required.</p>
+                <p ng-message="minlength">This field needs to contain 4 digits.</p>
+                <p ng-message="maxlength">This field needs to contain 4 digits.</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="comment">Comment</label>
+            <div class="col-sm-6 col-md-4">
+                <textarea ng-model="pc.newOrderRes.comment" name="comment" id="comment" class="form-control" required ng-minlength="30" ng-maxlength="250"></textarea>
+            </div>
+            <div ng-messages="pc.form.comment.$error" ng-show="pc.form.comment.$touched">
+                <p ng-message="required">This field is required.</p>
+                <p ng-message="minlength">This field needs to contain at least 30 characters.</p>
+                <p ng-message="maxlength">This field can contain at most 250 characters.</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="delivery">Delivery?</label>
+            <div class="col-sm-6 col-md-4">
+                <input ng-model="data.check"  type="checkbox" class="form-control" ng-change="data.text = !data.check ? '' : data.text">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2">Address</label>
+            <div class="col-sm-6 col-md-4">
+                <input type="text" ng-model="pc.newOrderRes.adress"  id="address" class="form-control"   ng-disabled="!data.check">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="telephone">Telephone</label>
+            <div class="col-sm-6 col-md-4">
+                <input type="text" ng-model="pc.newOrderRes.telephone" name="telephone" id="telephone" class="form-control" required>
+            </div>
+            <div ng-messages="pc.form.telephone.$error" ng-show="pc.form.telephone.$touched">
+                <p ng-message="required">This field is required.</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="surname">Surname</label>
+            <div class="col-sm-6 col-md-4">
+                <input ng-model="pc.newOrderRes.surname" name="surname" type="text" class="form-control" required ng-minlength="5">
+            </div>
+            <div ng-messages="pc.form.surname.$error" ng-show="pc.form.surname.$touched">
+                <p ng-message="required">This field is required.</p>
+                <p ng-message="minlength">This field needs to contain at least 5 characters.</p>
+            </div>
+        </div>
+        <div>
+        	<button type="subbmit" class="btn btn-primary" >Confirm order</button>
+        	<button type="button" class="btn btn-danger" ng-show="pc.newOrderRes.description" ng-click="pc.remove()">Delete</button>
+        	<a class="btn btn-default" href="#/pizzas"><i class="fa fa-chevron-left"></i> Back</a>
+        </div>
+    </form>
+</div>

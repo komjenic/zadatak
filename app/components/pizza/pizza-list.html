@@ -1,0 +1,67 @@
+    <table class="table">
+        <thead class="gray">
+            <td>
+                <span>Pizza</span>
+                <span ng-show="plc.pagination.page !== 1">
+                    <a ng-href aria-label="Previous" ng-click="plc.pagination.changePage(plc.pagination.page - 1)">
+                        <span aria-hidden="true">&laquo;Prev</span>
+                    </a>
+                </span>
+                <span ng-show="plc.pagination.page !== plc.pagination.numberOfPages">
+                    <a ng-href aria-label="Next" ng-click="plc.pagination.changePage(plc.pagination.page + 1)">
+                        <span aria-hidden="true">Next&raquo;</span>
+                    </a>
+                </span>
+            </td>
+
+
+            <td>
+                <span>
+                    <a class="link" ng-href ng-click="plc.tableChanged('price')">
+                        Price
+                        <i class="fa fa-sort disabled" ng-hide="plc.sort == 'price'"></i>
+                        <i class="fa fa-sort-desc" ng-show="plc.sort == 'price' && plc.sortDirection == 'asc'"></i>     
+                        <i class="fa fa-sort-asc" ng-show="plc.sort == 'price' && plc.sortDirection == 'desc'"></i>
+                    </a>
+                </span>
+            </td>
+            <td>
+                <span>
+                    <a class="link" ng-href ng-click="plc.tableChanged('grade')">
+                        Grade
+                        <i class="fa fa-sort disabled" ng-hide="plc.sort == 'grade'"></i>
+                        <i class="fa fa-sort-desc" ng-show="plc.sort == 'grade' && plc.sortDirection == 'asc'"></i>     
+                        <i class="fa fa-sort-asc" ng-show="plc.sort == 'grade' && plc.sortDirection == 'desc'"></i>
+                    </a>
+                </span>
+            </td>
+
+        </thead>
+        <tbody>
+            <tr ng-repeat="pizza in plc.pizzas">
+                <td>
+                    <h4><a href ng-click="plc.edit(pizza.description)">{{pizza.name}}</a>  </h4>
+                    <br>
+                    <p>{{ pizza.description | limitTo : 150}}{{pizza.description.length > 150 ? '...' : ''}}</p>
+                </td>
+                <td class="text-center">
+                    <span >{{pizza.price}}$ </span>
+
+                </td>
+                <td class="text-center">
+                    <span>{{pizza.grade}}/5</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <div class="btn-group pull-right">
+        <label class="btn btn-primary" ng-model="plc.radioModel" uib-btn-radio="'Left'" ng-click="plc.pagination.changePageSize(5)">5</label>
+        <label class="btn btn-primary" ng-model="plc.radioModel" uib-btn-radio="'Middle'" ng-click="plc.pagination.changePageSize(10)">10</label>
+        <label class="btn btn-primary" ng-model="plc.radioModel" uib-btn-radio="'Right'" ng-click="plc.pagination.changePageSize(20)">20</label>
+    </div>
+
+    
+    <!-- <div class="row">
+    	<a class="btn btn-primary" href="#/pizza/add">Add new pizza</a>
+    </div> -->
