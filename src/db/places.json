@@ -1,0 +1,8 @@
+[
+    {"_id": "1", "postalCode": "21000", "name":"Novi Sad"},
+    {"_id": "2", "postalCode": "11000", "name":"Beograd"},
+    {"_id": "3", "postalCode": "24000", "name":"Subotica"},
+    {"_id": "4", "postalCode": "34000", "name":"Kragujevac"},
+    {"_id": "5", "postalCode": "22000", "name":"Sremska Mitrovica"},
+    {"_id": "6", "postalCode": "31000", "name":"Užice"}
+]
